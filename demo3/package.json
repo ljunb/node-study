@@ -1,0 +1,16 @@
+{
+  "name": "demo3-koa",
+  "version": "1.0.0",
+  "description": "Demo for koa study, type 'lsof -i :3000' to see what process use in port",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "koa": "2.5.0",
+    "koa-bodyparser": "4.2.0",
+    "koa-router": "7.4.0"
+  },
+  "author": "cookiej",
+  "license": "ISC"
+}

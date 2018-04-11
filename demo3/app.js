@@ -1,21 +1,12 @@
 const Koa = require('koa')
-const router = require('koa-router')()
+const bodyParser = require('koa-bodyparser')
+const controllers = require('./middlewares/controller')
 
 const app = new Koa()
 
-app.use(async (ctx, next) => {
-  console.log(`Process ${ctx.method} ${ctx.url}`)
-  await next()
-})
+// koa-bodyparser 中间件要先于 router 插入
+app.use(bodyParser())
+// koa-router 中间件将在 controllers 中使用到
+app.use(controllers())
 
-router.get('/', async (ctx, next) => {
-  ctx.response.body = '<h1>Index</h1>'
-})
-
-router.get('/hello/:name', async (ctx, next) => {
-  ctx.response.body = `<h1>Hello, ${ctx.params.name}!</h1>`
-})
-
-app.use(router.routes())
-
-app.listen(3001)
+app.listen(3000)
