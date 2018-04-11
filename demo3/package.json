@@ -9,7 +9,9 @@
   "dependencies": {
     "koa": "2.5.0",
     "koa-bodyparser": "4.2.0",
-    "koa-router": "7.4.0"
+    "koa-router": "7.4.0",
+    "xtemplate": "^4.6.1",
+    "xtpl": "^3.4.0"
   },
   "author": "cookiej",
   "license": "ISC"

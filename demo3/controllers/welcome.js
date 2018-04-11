@@ -1,10 +1,10 @@
 const handler_hello = async (ctx, next) => {
-  ctx.response.body = `<h1>Hello, ${ctx.params.name}!</h1>`
+  ctx.body = await ctx.render('welcome', {name: ctx.params.name})
 }
 
 module.exports = [
   {
-    path: 'hello/:name',
+    path: '/welcome/:name',
     method: 'GET',
     handler: handler_hello
   }

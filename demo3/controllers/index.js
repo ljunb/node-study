@@ -1,26 +1,17 @@
 const handler_index = async (ctx, next) => {
-  ctx.response.body = `
-    <h1>Index</h1>
-    <form action='/signin' method='post' >
-      <p>Name: <input name='name' value='koa' ></p>
-      <p>Password: <input name='password' type='password' ></p>
-      <p><input type='submit' value='Submit' ></p> 
-    </form>
-  `
+  ctx.body = await ctx.render('index')
 }
 
 const hanlder_signin = async (ctx, next) => {
   let name = ctx.request.body.name || ''
   let password = ctx.request.body.password || ''
   console.log(`Sign in with name: ${name}, password: ${password}`)
-  if (name === 'koa' && password === '123456') {
-    ctx.response.body = `<h1>Welcome, ${name}!</h1>`
-  } else {
-    ctx.response.body = `
-      <h1>Login failed!</h1>
-      <p><a href='/'>Try again!</a></p>
-    `
+  
+  const params = {
+    name,
+    isLoginSuccess: name.length !== 0 && password.length !== 0
   }
+  ctx.body = await ctx.render('signin', params)
 }
 
 module.exports = [

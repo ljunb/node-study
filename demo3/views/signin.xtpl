@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="charset" content="utf-8" />
+    <title>Login {{ isLoginSuccess ? 'success' : 'failed' }}</title>
+  </head>
+  <body>
+    {{#if (isLoginSuccess)}}
+      <h1>Welcome, {{ name }}!</h1>
+    {{else}}
+      <h1>Login failed!</h1>
+      <p><a href='/'>Try again!</a></p>
+    {{/if}}
+  </body>
+</html>
